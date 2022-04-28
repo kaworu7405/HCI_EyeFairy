@@ -17,7 +17,7 @@ public class getUserInfo extends AppCompatActivity {
 
         //Get greetText from layout
         TextView greetText = (TextView)findViewById(R.id.greetText);
-        greetText.setText("Hi! Nice to meet you.\n I have some questions");
+        greetText.setText("Hi! Nice to meet you.\n I have some questions.");
 
         Button nextBtn = (Button)findViewById(R.id.nextBtn);
         nextBtn.setOnClickListener(new View.OnClickListener() {

@@ -15,7 +15,7 @@ public class getEyedropInfo extends AppCompatActivity {
         setContentView(R.layout.activity_get_eyedrop_info);
 
         TextView greetText = (TextView)findViewById(R.id.instructionText);
-        greetText.setText("Please\nadd the info of your eye drops");
+        greetText.setText("Please\nadd the info of your eye drops!");
 
         Button nextBtn = (Button)findViewById(R.id.finishBtn);
         nextBtn.setOnClickListener(new View.OnClickListener() {

@@ -96,7 +96,7 @@
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/imageButton3"
+                    android:id="@+id/main_alarm_btn"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"

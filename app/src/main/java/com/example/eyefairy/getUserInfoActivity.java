@@ -14,8 +14,9 @@ import android.widget.Toast;
 
 import com.example.eyefairy.DB.UserDB;
 import com.example.eyefairy.DB.UserData;
+import com.example.eyefairy.Fragment.datePickerFragment;
 
-public class getUserInfo extends AppCompatActivity {
+public class getUserInfoActivity extends AppCompatActivity {
 
     Uri uri = null;
     String month_string;
@@ -67,7 +68,7 @@ public class getUserInfo extends AppCompatActivity {
                         newUserData.setUserData(userNameInput.getText().toString(), uri.toString(), Integer.parseInt(year_string), Integer.parseInt(month_string), Integer.parseInt(day_string));
                         db.userDao().insert(newUserData);
 
-                        Intent intent = new Intent(getApplicationContext(), getEyedropInfo.class);
+                        Intent intent = new Intent(getApplicationContext(), getEyedropInfoActivity.class);
                         startActivity(intent);
                     }
                 }

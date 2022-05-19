@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EyeFairy">
         <activity
-            android:name=".AlarmMainActivity"
+            android:name=".AlarmFunction.alarmMainActivity"
             android:exported="false" />
         <activity
-            android:name=".getUserInfo"
+            android:name=".getUserInfoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,8 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".getEyedropInfo" />
-        <activity android:name=".main" />
+        <activity android:name=".getEyedropInfoActivity" />
+        <activity android:name=".mainActivity" />
     </application>
 
 </manifest>

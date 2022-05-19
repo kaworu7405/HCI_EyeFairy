@@ -11,9 +11,7 @@ import android.widget.TextView;
 import com.example.eyefairy.DB.UserDB;
 import com.example.eyefairy.DB.UserData;
 
-import java.util.List;
-
-public class getEyedropInfo extends AppCompatActivity {
+public class getEyedropInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +27,7 @@ public class getEyedropInfo extends AppCompatActivity {
             //called when Finish Button is Clicked
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), main.class);
+                Intent intent = new Intent(getApplicationContext(), mainActivity.class);
                 startActivity(intent);
                 }
             }

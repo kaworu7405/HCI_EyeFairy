@@ -1,4 +1,4 @@
-package com.example.eyefairy.adapter;
+package com.example.eyefairy.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.eyefairy.R;
-import com.example.eyefairy.data.alarmData;
+import com.example.eyefairy.DB.AlarmData;
 
 import java.util.ArrayList;
 
@@ -17,9 +17,9 @@ public class AlarmAdapter extends BaseAdapter {
 
     Context mContext = null;
     LayoutInflater mLayoutInflater = null;
-    ArrayList<alarmData> alarm ;
+    ArrayList<AlarmData> alarm ;
 
-    public AlarmAdapter(Context context, ArrayList<alarmData> data){
+    public AlarmAdapter(Context context, ArrayList<AlarmData> data){
         mContext = context;
         alarm = data;
         mLayoutInflater = LayoutInflater.from(mContext);
@@ -32,7 +32,7 @@ public class AlarmAdapter extends BaseAdapter {
     }
 
     @Override
-    public alarmData getItem(int i) {
+    public AlarmData getItem(int i) {
         return alarm.get(i);
     }
 

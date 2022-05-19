@@ -1,4 +1,4 @@
-package com.example.eyefairy;
+package com.example.eyefairy.Fragment;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -8,11 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.DatePicker;
-import android.widget.TextView;
+
+import com.example.eyefairy.getUserInfoActivity;
 
 import java.util.Calendar;
 
@@ -35,7 +33,7 @@ public class datePickerFragment extends DialogFragment
 
     @Override
     public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-        getUserInfo activity = (getUserInfo)getActivity();
+        getUserInfoActivity activity = (getUserInfoActivity)getActivity();
         activity.processDatePickerResult(year,month,day);
     }
 }

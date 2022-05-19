@@ -1,6 +1,6 @@
-package com.example.eyefairy.data;
+package com.example.eyefairy.DB;
 
-public class alarmData {
+public class AlarmData {
 
     private String name;
     private String interval;
@@ -8,7 +8,7 @@ public class alarmData {
     private int hour;
     private int min;
 
-    public alarmData(String name, String interval, String day, int hour, int min){
+    public AlarmData(String name, String interval, String day, int hour, int min){
 
         this.name = name;
         this.day = day;

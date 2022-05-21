@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EyeFairy">
         <activity
+            android:name=".RecordFunction.recordMainActivity"
+            android:exported="true" />
+        <activity
             android:name=".AlarmFunction.alarmMainActivity"
             android:exported="false" />
         <activity
-            android:name=".getUserInfoActivity"
+            android:name=".mainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".getEyedropInfoActivity" />
-        <activity android:name=".mainActivity" />
+        <activity android:name=".getUserInfoActivity" />
     </application>
 
 </manifest>

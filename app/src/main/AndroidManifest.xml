@@ -21,8 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".getEyedropInfoActivity" />
+        <activity android:name=".getEyedropInfoActivity"/>
         <activity android:name=".mainActivity" />
+        <activity android:name=".AlarmFunction.addAlarmActivity" />
     </application>
 
 </manifest>

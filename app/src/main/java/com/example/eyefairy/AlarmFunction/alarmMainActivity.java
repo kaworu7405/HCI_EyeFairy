@@ -25,8 +25,8 @@ public class alarmMainActivity extends AppCompatActivity {
         this.InitializeAlarmData();
 
         ListView listView = (ListView)findViewById(R.id.alarm_listview);
-        final AlarmAdapter myAdapter = new AlarmAdapter(this, alarmDataList);
-
+       // final AlarmAdapter myAdapter = new AlarmAdapter(this, alarmDataList);
+/*
         listView.setAdapter(myAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
@@ -37,15 +37,11 @@ public class alarmMainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
             }
         });
-
+*/
     }
 
     public void InitializeAlarmData()
     {
         alarmDataList = new ArrayList<AlarmData>();
-
-        alarmDataList.add(new AlarmData("잼티스트","240", "4", 1, 30));
-        alarmDataList.add(new AlarmData("잼지나","240", "3", 2, 10));
-        alarmDataList.add(new AlarmData("잼지원","240", "3", 2,10));
     }
 }

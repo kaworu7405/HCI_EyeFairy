@@ -1,10 +1,13 @@
 package com.example.eyefairy.DB;
 
+import android.net.Uri;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.net.URI;
 
 @Entity(tableName= "UserData")
 public class UserData implements Serializable {
@@ -19,7 +22,7 @@ public class UserData implements Serializable {
     public String getUserName(){
         return userName;
     }
-
+    public Uri getURI() {return Uri.parse(uri); }
     @PrimaryKey(autoGenerate = true)
     int id;
     @ColumnInfo(name = "name")

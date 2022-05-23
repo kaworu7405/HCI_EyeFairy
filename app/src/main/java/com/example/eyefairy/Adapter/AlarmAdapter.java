@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.eyefairy.R;
 import com.example.eyefairy.DB.AlarmData;
@@ -26,6 +27,13 @@ public class AlarmAdapter extends BaseAdapter {
     }
 
 
+    public void add(AlarmData data){
+        alarm.add(data);
+    }
+
+    public void delete(int i){
+        alarm.remove(i);
+    }
     @Override
     public int getCount() {
         return alarm.size();
@@ -45,17 +53,20 @@ public class AlarmAdapter extends BaseAdapter {
     public View getView(int i, View converView, ViewGroup viewGroup) {
         View view = mLayoutInflater.inflate(R.layout.alarm_info, null);
 
-        EditText personName = (EditText) view.findViewById(R.id.editTextTextPersonName);
-        EditText interval = (EditText) view.findViewById(R.id.editTextNumber);
-        EditText times = (EditText) view.findViewById(R.id.editTextNumber2);
-        Spinner hour = (Spinner) view.findViewById(R.id.spinner);
-        Spinner min = (Spinner) view.findViewById(R.id.spinner2);
+        TextView eyeDropName = (TextView) view.findViewById(R.id.eyeDropNameText);
+        TextView interval = (TextView) view.findViewById(R.id.intervalText);
+        TextView times = (TextView) view.findViewById(R.id.HowManyText);
+        TextView hour = (TextView) view.findViewById(R.id.hourText);
+        TextView min = (TextView) view.findViewById(R.id.minuteText);
 
-        personName.setText(alarm.get(i).getName());
-        interval.setText(alarm.get(i).getInterval());
-        times.setText(alarm.get(i).getDay());
-        //hour.set(alarm.get(i).getName());
-        //min.setText(alarm.get(i).getName());
+
+        eyeDropName.setText(alarm.get(i).getName());
+        interval.setText(Integer.toString(alarm.get(i).getInterval()));
+        times.setText(Integer.toString(alarm.get(i).getHowmany()));
+            //hour.set(alarm.get(i).getName());
+            //min.setText(alarm.get(i).getName());
+
+
 
         return view;
 

@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".getEyedropInfoActivity" />
         <activity android:name=".getUserInfoActivity" />
+        <activity android:name=".AlarmFunction.addAlarmActivity" />
+
     </application>
 
 </manifest>

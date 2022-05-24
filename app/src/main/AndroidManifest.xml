@@ -27,6 +27,7 @@
         <activity android:name=".getEyedropInfoActivity" />
         <activity android:name=".getUserInfoActivity" />
         <activity android:name=".AlarmFunction.addAlarmActivity" />
+        <activity android:name=".RadioFunction.radioActivity" />
 
     </application>
 

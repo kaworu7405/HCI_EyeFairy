@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eyefairy.AlarmFunction.alarmMainActivity;
+import com.example.eyefairy.RecordFunction.recordMainActivity;
 
 public class mainActivity extends AppCompatActivity {
     @Override
@@ -25,6 +26,18 @@ public class mainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageButton record_btn = (ImageButton) findViewById(R.id.main_record_btn);
+
+        record_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), recordMainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
     }

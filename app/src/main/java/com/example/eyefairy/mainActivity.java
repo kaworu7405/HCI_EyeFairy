@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eyefairy.AlarmFunction.alarmMainActivity;
+import com.example.eyefairy.RadioFunction.radioActivity;
 import com.example.eyefairy.RecordFunction.recordMainActivity;
 
 public class mainActivity extends AppCompatActivity {
@@ -35,6 +36,17 @@ public class mainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), recordMainActivity.class);
                 startActivity(intent);
             }
+        });
+
+        ImageButton radio_btn = (ImageButton) findViewById(R.id.main_radio_btn);
+
+        radio_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), radioActivity.class);
+                startActivity(intent);
+            }
+
         });
 
 

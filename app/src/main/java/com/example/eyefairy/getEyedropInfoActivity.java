@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -43,7 +45,7 @@ public class getEyedropInfoActivity extends AppCompatActivity {
         alarmDataList=new ArrayList<AlarmData>();
         adapter = new AlarmAdapter(this, alarmDataList);
         listview.setAdapter(adapter);
-
+        this.registerForContextMenu(listview);
         Button nextBtn = (Button)findViewById(R.id.finishBtn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
 
@@ -66,41 +68,6 @@ public class getEyedropInfoActivity extends AppCompatActivity {
                 }
             }
         );
-
-
-        listview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> a_parent, View a_view, final int a_position, long a_id) {
-                Toast.makeText(getApplicationContext(), "long clicked!", Toast.LENGTH_LONG).show();
-
-                // Popup menu 생성
-                PopupMenu popup = new PopupMenu(getEyedropInfoActivity.this, a_view);
-                getMenuInflater().inflate(R.menu.eyedrop_menu, popup.getMenu());
-
-                // Popup menu click event 처리
-                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                    @Override
-                    public boolean onMenuItemClick(MenuItem a_item) {
-                        final AlarmData item = (AlarmData) adapter.getItem(a_position);
-                        switch (a_item.getItemId()) {
-                            case R.id.delete:
-                                adapter.delete(a_position);
-                                adapter.notifyDataSetChanged();
-                                break;
-
-                            default:
-                                break;
-                        }
-                        return false;
-                    }
-                });
-
-                // Popup 보이기
-                popup.show();
-
-                return true;
-            }
-        });
     }
 
     @Override
@@ -114,5 +81,37 @@ public class getEyedropInfoActivity extends AppCompatActivity {
         }else{
 
         }
+    }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        // TODO Auto-generated method stub
+
+        super.onCreateContextMenu(menu, v, menuInfo);
+
+        menu.add(0, 0, 0, "Delete");
+        menu.add(0, 1, 1, "Modify");
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info
+                = (AdapterView.AdapterContextMenuInfo) item
+                .getMenuInfo();
+        int itemPosition = info.position;
+        int selected = 0;
+        switch (item.getItemId()) {
+
+            case 0:
+                adapter.delete(itemPosition);
+                adapter.notifyDataSetChanged();
+                break;
+            case 1:
+                break;
+
+        }
+        return super.onContextItemSelected(item);
+
     }
 }

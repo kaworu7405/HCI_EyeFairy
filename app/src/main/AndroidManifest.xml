@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EyeFairy">
         <activity
-            android:name=".recordAddActivity"
+            android:name=".RecordFunction.recordAddActivity"
             android:exported="false" />
         <activity
             android:name=".RecordFunction.recordMainActivity"

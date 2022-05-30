@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EyeFairy">
         <activity
+            android:name=".recordAddActivity"
+            android:exported="false" />
+        <activity
             android:name=".RecordFunction.recordMainActivity"
             android:exported="true" />
         <activity
@@ -28,7 +31,6 @@
         <activity android:name=".getUserInfoActivity" />
         <activity android:name=".AlarmFunction.addAlarmActivity" />
         <activity android:name=".RadioFunction.radioActivity" />
-
     </application>
 
 </manifest>

@@ -32,8 +32,8 @@ public class recordMainActivity extends AppCompatActivity {
         lineChart = (LineChart) findViewById(R.id.chart);
         List<Entry> entries = new ArrayList<>();
 
-        entries.add(new Entry(1, 1));
-        entries.add(new Entry(2, 2));
+        entries.add(new Entry(0, 0));
+        entries.add(new Entry(0, 100));
         entries.add(new Entry(3, 3));
         entries.add(new Entry(4, 4));
         entries.add(new Entry(5, 5));

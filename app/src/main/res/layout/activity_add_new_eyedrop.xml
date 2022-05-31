@@ -59,7 +59,7 @@
                 <EditText
                     android:id="@+id/eyeDropNameEdit"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:ems="10"
@@ -78,7 +78,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="221dp"
+                    android:layout_width="220dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
@@ -91,7 +91,7 @@
                 <EditText
                     android:id="@+id/eyeDropIntervalHEdit1"
                     android:layout_width="200dp"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:ems="10"
@@ -102,7 +102,7 @@
                 <EditText
                     android:id="@+id/eyeDropIntervalMEdit1"
                     android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:ems="10"
@@ -119,6 +119,7 @@
                 android:weightSum="2">
 
                 <TextView
+                    android:id="@+id/textview9"
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center"
@@ -130,9 +131,42 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/eyeDropHowManyEdit"
+                    android:id="@+id/eyeDropHowManyTimesEdit1"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:gravity="right"
+                    android:hint="a day"
+                    android:inputType="number" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/textview8"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="How many days"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eyeDropHowManyDaysEdit1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:ems="10"
@@ -151,8 +185,8 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="170dp"
+                    android:layout_height="60dp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:padding="2dp"
@@ -162,13 +196,15 @@
 
                 <TextView
                     android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="18dp" />
 
                 <ImageButton
                     android:id="@+id/timePicker2"
-                    android:layout_width="match_parent"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     app:srcCompat="@android:drawable/ic_lock_idle_alarm" />

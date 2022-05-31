@@ -5,11 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -20,7 +17,6 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.eyefairy.DB.AlarmData;
 import com.example.eyefairy.Fragment.TimePickerFragment;
-import com.example.eyefairy.Fragment.datePickerFragment;
 import com.example.eyefairy.R;
 
 import java.text.DateFormat;
@@ -36,15 +32,16 @@ public class modifyAlarmActivity extends AppCompatActivity implements TimePicker
         setContentView(R.layout.activity_modify_eyedrop);
 
         AlarmData data = (AlarmData)getIntent().getSerializableExtra("data");
-
         TextView eyeDropNameEdit=(TextView)findViewById(R.id.eyeDropNameEdit);
         eyeDropNameEdit.setText(data.getName());
         TextView eyeDropIntervalHEdit=(TextView)findViewById(R.id.eyeDropIntervalHEdit2);
         eyeDropIntervalHEdit.setText(Integer.toString(data.getIntervalH()));
         TextView eyeDropIntervalMEdit=(TextView)findViewById(R.id.eyeDropIntervalMEdit2);
         eyeDropIntervalMEdit.setText(Integer.toString(data.getIntervalM()));
-        TextView eyeDropHowManyEdit=(TextView)findViewById(R.id.eyeDropHowManyEdit);
-        eyeDropHowManyEdit.setText(Integer.toString(data.getHowmany()));
+        TextView eyeDropHowManyTimesEdit=(TextView)findViewById(R.id.eyeDropHowManyTimesEdit2);
+        eyeDropHowManyTimesEdit.setText(Integer.toString(data.getHowManyTimes()));
+        TextView eyeDropHowManyDaysEdit = (TextView)findViewById(R.id.eyeDropHowManyDaysEdit2);
+        eyeDropHowManyDaysEdit.setText(Integer.toString(data.getHowManyDays()));
         TextView eyeDropTimeText = (TextView)findViewById(R.id.textView7);
         eyeDropTimeText.setText(Integer.toString(data.getHour())+":"+Integer.toString(data.getMin())+" "+data.getAmPm());
 
@@ -73,13 +70,14 @@ public class modifyAlarmActivity extends AppCompatActivity implements TimePicker
             @Override
             public void onClick(View view) {
             if(eyeDropNameEdit.getText().toString().isEmpty()||eyeDropIntervalHEdit.getText().toString().isEmpty()||eyeDropIntervalMEdit.getText().toString().isEmpty()
-               ||eyeDropHowManyEdit.getText().toString().isEmpty())
+               ||eyeDropHowManyTimesEdit.getText().toString().isEmpty()||eyeDropHowManyDaysEdit.getText().toString().isEmpty())
                     {
                         Toast.makeText(getApplicationContext(), "Please fill it all out!", Toast.LENGTH_LONG).show();
                     }
                     else{
                         data.setName(eyeDropNameEdit.getText().toString());
-                        data.setHowmany(Integer.parseInt(eyeDropHowManyEdit.getText().toString()));
+                        data.setHowManyTimes(Integer.parseInt(eyeDropHowManyTimesEdit.getText().toString()));
+                        data.setHowManyDays(Integer.parseInt(eyeDropHowManyDaysEdit.getText().toString()));
                         data.setIntervalH(Integer.parseInt(eyeDropIntervalHEdit.getText().toString()));
                         data.setIntervalM(Integer.parseInt(eyeDropIntervalMEdit.getText().toString()));
                         data.setAmPm(ampm);

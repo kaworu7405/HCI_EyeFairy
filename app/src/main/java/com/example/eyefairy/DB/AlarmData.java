@@ -10,9 +10,10 @@ import java.io.Serializable;
 
 @Entity(tableName = "table_name")
 public class AlarmData implements Serializable {
-    public AlarmData(String name, int howmany, int intervalH, int intervalM,  String amPm, int hour, int min, String kind){
+    public AlarmData(String name, int howManyTimes, int howManyDays, int intervalH, int intervalM,  String amPm, int hour, int min, String kind){
         this.name = name;
-        this.howmany = howmany;
+        this.howManyTimes = howManyTimes;
+        this.howManyDays = howManyDays;
         this.intervalH = intervalH;
         this.intervalM = intervalM;
         this.hour = hour;
@@ -31,8 +32,10 @@ public class AlarmData implements Serializable {
     private int intervalH;
     @ColumnInfo(name = "intervalM")
     private int intervalM;
-    @ColumnInfo(name = "howmany")
-    private int howmany;
+    @ColumnInfo(name = "howManyTimes")
+    private int howManyTimes;
+    @ColumnInfo(name="howManyDays")
+    private int howManyDays;
     @ColumnInfo(name = "hour")
     private int hour;
     @ColumnInfo(name = "min")
@@ -42,12 +45,15 @@ public class AlarmData implements Serializable {
     @ColumnInfo(name = "kind")
     private String kind;
 
-
     public String getAmPm() {
         return amPm;
     }
-    public int getHowmany() {
-        return howmany;
+    public int getHowManyTimes() {
+        return howManyTimes;
+    }
+    public int getHowManyDays()
+    {
+        return howManyDays;
     }
     public int getHour() {
         return hour;
@@ -67,11 +73,12 @@ public class AlarmData implements Serializable {
     public int getKey(){return key;}
     public String getKind(){return kind;}
 
+
     public void setAmPm(String _ampm) {
         amPm=_ampm;
     }
-    public void setHowmany(int _howmany) {
-        howmany=_howmany;
+    public void setHowManyTimes(int _howmany) {
+        howManyTimes=_howmany;
     }
     public void setHour(int _hour) {
         hour=_hour;
@@ -90,4 +97,7 @@ public class AlarmData implements Serializable {
         min=_min;
     }
     public void setKind(String _kind) {kind = _kind;}
+    public void setHowManyDays(int _howManyDays){
+        howManyDays=_howManyDays;
+    }
 }

@@ -2,14 +2,10 @@ package com.example.eyefairy.AlarmFunction;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
@@ -20,7 +16,6 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.eyefairy.DB.AlarmData;
 import com.example.eyefairy.Fragment.TimePickerFragment;
-import com.example.eyefairy.Fragment.datePickerFragment;
 import com.example.eyefairy.R;
 
 import java.text.DateFormat;
@@ -58,17 +53,17 @@ public class addAlarmActivity extends AppCompatActivity implements TimePickerDia
                     TextView eyeDropNameEdit = (TextView)findViewById(R.id.eyeDropNameEdit);
                     TextView eyeDropIntervalHEdit = (TextView)findViewById(R.id.eyeDropIntervalHEdit1);
                     TextView eyeDropIntervalMEdit = (TextView)findViewById(R.id.eyeDropIntervalMEdit1);
-                    TextView eyeDropHowManyEdit = (TextView)findViewById(R.id.eyeDropHowManyEdit);
+                    TextView eyeDropHowManyTimesEdit = (TextView)findViewById(R.id.eyeDropHowManyTimesEdit1);
+                    TextView eyeDropHowManyDaysEdit = (TextView)findViewById(R.id.eyeDropHowManyDaysEdit1);
                     TextView eyeDropTimeText = (TextView)findViewById(R.id.textView6);
 
                     if(eyeDropNameEdit.getText().toString().isEmpty()||eyeDropIntervalHEdit.getText().toString().isEmpty()||eyeDropIntervalMEdit.getText().toString().isEmpty()
-                    ||eyeDropHowManyEdit.getText().toString().isEmpty()||eyeDropTimeText.getText().toString().isEmpty())
+                    ||eyeDropHowManyTimesEdit.getText().toString().isEmpty()||eyeDropTimeText.getText().toString().isEmpty()||eyeDropHowManyDaysEdit.getText().toString().isEmpty())
                     {
                         Toast.makeText(getApplicationContext(), "Please fill it all out!", Toast.LENGTH_LONG).show();
                     }
                     else{
-                        String switchStr;
-                        AlarmData newAlarm = new AlarmData(eyeDropNameEdit.getText().toString(), Integer.parseInt(eyeDropHowManyEdit.getText().toString()), Integer.parseInt(eyeDropIntervalHEdit.getText().toString()), Integer.parseInt(eyeDropIntervalMEdit.getText().toString()), ampm, hour, min, sw.getText().toString());
+                        AlarmData newAlarm = new AlarmData(eyeDropNameEdit.getText().toString(), Integer.parseInt(eyeDropHowManyTimesEdit.getText().toString()), Integer.parseInt(eyeDropHowManyDaysEdit.getText().toString()), Integer.parseInt(eyeDropIntervalHEdit.getText().toString()), Integer.parseInt(eyeDropIntervalMEdit.getText().toString()), ampm, hour, min, sw.getText().toString());
 
                         Intent intent = new Intent();
                         intent.putExtra("newAlarm", newAlarm);

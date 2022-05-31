@@ -38,7 +38,8 @@ public class AlarmAdapter extends BaseAdapter {
     {
         alarm.get(i).setAmPm(data.getAmPm());
         alarm.get(i).setHour(data.getHour());
-        alarm.get(i).setHowmany(data.getHowmany());
+        alarm.get(i).setHowManyTimes(data.getHowManyTimes());
+        alarm.get(i).setHowManyDays(data.getHowManyDays());
         alarm.get(i).setIntervalH(data.getIntervalH());
         alarm.get(i).setIntervalM(data.getIntervalM());
         alarm.get(i).setMin(data.getMin());
@@ -73,7 +74,7 @@ public class AlarmAdapter extends BaseAdapter {
 
         eyeDropName.setText(alarm.get(i).getName());
         interval.setText(Integer.toString(alarm.get(i).getIntervalH())+"h "+alarm.get(i).getIntervalM()+"m");
-        times.setText(Integer.toString(alarm.get(i).getHowmany())+" a day");
+        times.setText(Integer.toString(alarm.get(i).getHowManyTimes())+" times for "+ Integer.toString(alarm.get(i).getHowManyDays()) +" days" );
         String str=Integer.toString(alarm.get(i).getMin());
         if(alarm.get(i).getMin()==0 || alarm.get(i).getMin()==5){
             str="0"+str;

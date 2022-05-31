@@ -3,8 +3,11 @@ package com.example.eyefairy.RecordFunction;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.eyefairy.R;
 import com.github.mikephil.charting.animation.Easing;
@@ -30,8 +33,8 @@ public class recordMainActivity extends AppCompatActivity {
         lineChart = (LineChart) findViewById(R.id.chart);
         List<Entry> entries = new ArrayList<>();
 
-        entries.add(new Entry(1, 1));
-        entries.add(new Entry(2, 2));
+        entries.add(new Entry(0, 0));
+        entries.add(new Entry(0, 100));
         entries.add(new Entry(3, 3));
         entries.add(new Entry(4, 4));
         entries.add(new Entry(5, 5));
@@ -73,6 +76,18 @@ public class recordMainActivity extends AppCompatActivity {
         lineChart.setDescription(description);
         lineChart.animateY(2000, Easing.EaseInCubic);
         lineChart.invalidate();
+
+        Button record_add = (Button) findViewById(R.id.record_add_btn);
+
+        record_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), recordAddActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
 
     }

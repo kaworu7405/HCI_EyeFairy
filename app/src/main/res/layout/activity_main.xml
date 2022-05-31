@@ -94,7 +94,7 @@
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/imageButton4"
+                    android:id="@+id/main_radio_btn"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center"

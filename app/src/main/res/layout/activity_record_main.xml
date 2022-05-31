@@ -7,9 +7,31 @@
     android:layout_height="match_parent"
     tools:context=".RecordFunction.recordMainActivity">
 
+
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="400dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:text="ADD"
+        android:id="@+id/record_add_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="188dp"
+        app:layout_constraintBottom_toTopOf="@+id/record_list"
+        app:layout_constraintTop_toBottomOf="@+id/chart"
+        tools:layout_editor_absoluteX="20dp" />
+
+
+    <ListView
+        android:id="@+id/record_list"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

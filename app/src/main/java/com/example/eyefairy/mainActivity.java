@@ -19,6 +19,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.eyefairy.AlarmFunction.alarmMainActivity;
+import com.example.eyefairy.RadioFunction.radioActivity;
 import com.example.eyefairy.DB.UserDB;
 import com.example.eyefairy.DB.UserData;
 
@@ -46,12 +47,24 @@ public class mainActivity extends AppCompatActivity {
         });
 
         ImageButton record_btn = (ImageButton) findViewById(R.id.main_record_btn);
+
         record_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), recordMainActivity.class);
                 startActivity(intent);
             }
+        });
+
+        ImageButton radio_btn = (ImageButton) findViewById(R.id.main_radio_btn);
+
+        radio_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), radioActivity.class);
+                startActivity(intent);
+            }
+
         });
 
 

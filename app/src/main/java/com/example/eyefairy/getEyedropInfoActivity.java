@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.example.eyefairy.Adapter.AlarmAdapter;
 import com.example.eyefairy.AlarmFunction.addAlarmActivity;
+import com.example.eyefairy.AlarmFunction.modifyAlarmActivity;
+import com.example.eyefairy.DB.AlarmDB;
 import com.example.eyefairy.DB.AlarmData;
 import com.example.eyefairy.DB.UserDB;
 import com.example.eyefairy.DB.UserData;
@@ -30,15 +32,17 @@ public class getEyedropInfoActivity extends AppCompatActivity {
     ListView listview = null;
     AlarmAdapter adapter = null;
     ArrayList<AlarmData> alarmDataList;
+    AlarmDB alarmDB=null;
+    int itemPosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_eyedrop_info);
-        ImageView userProfile = (ImageView)findViewById(R.id.userProfile);
+        alarmDB = AlarmDB.getInstance(this);
         UserDB db = UserDB.getInstance(this);
 
         UserData userData = db.userDao().getAll().get(db.userDao().getAll().size()-1);
-        userProfile.setImageURI(userData.getURI());
+
         TextView greetText = (TextView)findViewById(R.id.instructionText);
         greetText.setText(userData.getUserName() +", Nice to meet you. \n Please add the info of your eye drops!");
         listview=(ListView)findViewById(R.id.eyeDropListView);
@@ -54,6 +58,7 @@ public class getEyedropInfoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), mainActivity.class);
                 startActivity(intent);
+                finish();
                 }
             }
         );
@@ -68,6 +73,8 @@ public class getEyedropInfoActivity extends AppCompatActivity {
                 }
             }
         );
+
+
     }
 
     @Override
@@ -78,8 +85,15 @@ public class getEyedropInfoActivity extends AppCompatActivity {
 
             adapter.add(alarmData);
             adapter.notifyDataSetChanged();
-        }else{
+            alarmDB.alarmDao().insert(alarmData);
 
+        }else if(requestCode == 5678 && resultCode == RESULT_OK){
+            AlarmData alarmData=(AlarmData) data.getSerializableExtra("newAlarm");
+
+            alarmDB.alarmDao().update(alarmData);
+
+            adapter.update(itemPosition, alarmData);
+            adapter.notifyDataSetChanged();
         }
     }
     @Override
@@ -99,15 +113,19 @@ public class getEyedropInfoActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info
                 = (AdapterView.AdapterContextMenuInfo) item
                 .getMenuInfo();
-        int itemPosition = info.position;
+        itemPosition = info.position;
         int selected = 0;
         switch (item.getItemId()) {
 
             case 0:
+                alarmDB.alarmDao().delete(adapter.getItem(itemPosition));
                 adapter.delete(itemPosition);
                 adapter.notifyDataSetChanged();
                 break;
             case 1:
+                Intent intent = new Intent(getEyedropInfoActivity.this, modifyAlarmActivity.class);
+                intent.putExtra("data", adapter.getItem(itemPosition));
+                startActivityForResult(intent, 5678);
                 break;
 
         }

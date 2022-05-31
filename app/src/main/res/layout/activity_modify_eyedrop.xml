@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/TextView1"
+            android:id="@+id/TextView2"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:background="#4CAF50"
             android:gravity="center"
-            android:text="Add new eye drop"
+            android:text="Modify eye drop"
             android:textColor="#FFFFFF"
             android:textSize="30dp"
             android:textStyle="bold" />
@@ -32,10 +30,11 @@
             android:orientation="vertical">
 
             <Switch
-                android:id="@+id/eyedropKindSwitch2"
+                android:id="@+id/eyedropKindSwitch3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
+                android:focusable="true"
                 android:gravity="right"
                 android:text="antibiotic"
                 android:textSize="18dp" />
@@ -43,6 +42,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_weight="2"
                 android:orientation="horizontal">
 
                 <TextView
@@ -74,7 +74,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:orientation="horizontal">
 
                 <TextView
@@ -89,7 +89,7 @@
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/eyeDropIntervalHEdit1"
+                    android:id="@+id/eyeDropIntervalHEdit2"
                     android:layout_width="200dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
@@ -100,23 +100,23 @@
                     android:inputType="number" />
 
                 <EditText
-                    android:id="@+id/eyeDropIntervalMEdit1"
+                    android:id="@+id/eyeDropIntervalMEdit2"
                     android:layout_width="200dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:ems="10"
                     android:gravity="right"
                     android:hint="m"
                     android:inputType="number" />
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:orientation="horizontal"
-                android:weightSum="2">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="300dp"
@@ -139,8 +139,6 @@
                     android:gravity="right"
                     android:hint="a day"
                     android:inputType="number" />
-
-
             </LinearLayout>
 
             <LinearLayout
@@ -161,13 +159,13 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
                 <ImageButton
-                    android:id="@+id/timePicker2"
+                    android:id="@+id/timePicker3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -176,7 +174,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/addAlarmBtn"
+                android:id="@+id/modifyAlarmBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -184,10 +182,9 @@
                 android:layout_marginEnd="10dp"
                 android:height="20dp"
                 android:background="@drawable/edit_round"
-                android:text="ADD"
+                android:text="MODIFY"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
         </LinearLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

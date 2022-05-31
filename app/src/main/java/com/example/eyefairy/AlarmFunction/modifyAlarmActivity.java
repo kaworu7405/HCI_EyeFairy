@@ -2,8 +2,8 @@ package com.example.eyefairy.AlarmFunction;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,17 +26,33 @@ import com.example.eyefairy.R;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-public class addAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener  {
+public class modifyAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
     int hour=1;
     int min=0;
     String ampm="AM";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_new_eyedrop);
+        setContentView(R.layout.activity_modify_eyedrop);
 
-        Switch sw=(Switch)findViewById(R.id.eyedropKindSwitch2);
+        AlarmData data = (AlarmData)getIntent().getSerializableExtra("data");
+
+        TextView eyeDropNameEdit=(TextView)findViewById(R.id.eyeDropNameEdit);
+        eyeDropNameEdit.setText(data.getName());
+        TextView eyeDropIntervalHEdit=(TextView)findViewById(R.id.eyeDropIntervalHEdit2);
+        eyeDropIntervalHEdit.setText(Integer.toString(data.getIntervalH()));
+        TextView eyeDropIntervalMEdit=(TextView)findViewById(R.id.eyeDropIntervalMEdit2);
+        eyeDropIntervalMEdit.setText(Integer.toString(data.getIntervalM()));
+        TextView eyeDropHowManyEdit=(TextView)findViewById(R.id.eyeDropHowManyEdit);
+        eyeDropHowManyEdit.setText(Integer.toString(data.getHowmany()));
+        TextView eyeDropTimeText = (TextView)findViewById(R.id.textView7);
+        eyeDropTimeText.setText(Integer.toString(data.getHour())+":"+Integer.toString(data.getMin())+" "+data.getAmPm());
+
+        Switch sw=(Switch)findViewById(R.id.eyedropKindSwitch3);
+        if(data.getKind().equals("artificial tears")){
+            sw.setChecked(true);
+            sw.setText("artificial tears");
+        }
         sw.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -50,37 +66,37 @@ public class addAlarmActivity extends AppCompatActivity implements TimePickerDia
             }
         });
 
-        Button addAlarmBtn = (Button)findViewById(R.id.addAlarmBtn);
-        addAlarmBtn.setOnClickListener(new View.OnClickListener() {
 
-                @Override
-                public void onClick(View view) {
-                    TextView eyeDropNameEdit = (TextView)findViewById(R.id.eyeDropNameEdit);
-                    TextView eyeDropIntervalHEdit = (TextView)findViewById(R.id.eyeDropIntervalHEdit1);
-                    TextView eyeDropIntervalMEdit = (TextView)findViewById(R.id.eyeDropIntervalMEdit1);
-                    TextView eyeDropHowManyEdit = (TextView)findViewById(R.id.eyeDropHowManyEdit);
-                    TextView eyeDropTimeText = (TextView)findViewById(R.id.textView6);
+        Button modifyAlarmBtn = (Button)findViewById(R.id.modifyAlarmBtn);
+        modifyAlarmBtn.setOnClickListener(new View.OnClickListener() {
 
-                    if(eyeDropNameEdit.getText().toString().isEmpty()||eyeDropIntervalHEdit.getText().toString().isEmpty()||eyeDropIntervalMEdit.getText().toString().isEmpty()
-                    ||eyeDropHowManyEdit.getText().toString().isEmpty()||eyeDropTimeText.getText().toString().isEmpty())
+            @Override
+            public void onClick(View view) {
+            if(eyeDropNameEdit.getText().toString().isEmpty()||eyeDropIntervalHEdit.getText().toString().isEmpty()||eyeDropIntervalMEdit.getText().toString().isEmpty()
+               ||eyeDropHowManyEdit.getText().toString().isEmpty())
                     {
                         Toast.makeText(getApplicationContext(), "Please fill it all out!", Toast.LENGTH_LONG).show();
                     }
                     else{
-                        String switchStr;
-                        AlarmData newAlarm = new AlarmData(eyeDropNameEdit.getText().toString(), Integer.parseInt(eyeDropHowManyEdit.getText().toString()), Integer.parseInt(eyeDropIntervalHEdit.getText().toString()), Integer.parseInt(eyeDropIntervalMEdit.getText().toString()), ampm, hour, min, sw.getText().toString());
-
+                        data.setName(eyeDropNameEdit.getText().toString());
+                        data.setHowmany(Integer.parseInt(eyeDropHowManyEdit.getText().toString()));
+                        data.setIntervalH(Integer.parseInt(eyeDropIntervalHEdit.getText().toString()));
+                        data.setIntervalM(Integer.parseInt(eyeDropIntervalMEdit.getText().toString()));
+                        data.setAmPm(ampm);
+                        data.setHour(hour);
+                        data.setMin(min);
+                        data.setKind(sw.getText().toString());
+                        Log.i("modify", eyeDropIntervalMEdit.getText().toString());
                         Intent intent = new Intent();
-                        intent.putExtra("newAlarm", newAlarm);
+                        intent.putExtra("modifiedData", data);
                         setResult(RESULT_OK, intent);
                         finish();
                     }
-
                 }
-        }
+            }
         );
 
-        ImageButton timePicker = (ImageButton) findViewById(R.id.timePicker2);
+        ImageButton timePicker = (ImageButton) findViewById(R.id.timePicker3);
         timePicker.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -88,6 +104,7 @@ public class addAlarmActivity extends AppCompatActivity implements TimePickerDia
                 timePicker.show(getSupportFragmentManager(), "time picker");
             }
         });
+
     }
 
     @Override
@@ -113,7 +130,7 @@ public class addAlarmActivity extends AppCompatActivity implements TimePickerDia
     }
 
     private void updateTimeText(Calendar c){
-        TextView textView=(TextView) findViewById(R.id.textView6);
+        TextView textView=(TextView) findViewById(R.id.textView7);
         String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
         textView.setText(timeText);
 

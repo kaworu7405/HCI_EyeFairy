@@ -1,27 +1,48 @@
 package com.example.eyefairy;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
+import androidx.loader.content.CursorLoader;
 
+import android.Manifest;
+import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.eyefairy.DB.UserDB;
 import com.example.eyefairy.DB.UserData;
+import com.example.eyefairy.Fragment.TimePickerFragment;
 import com.example.eyefairy.Fragment.datePickerFragment;
 
-public class getUserInfoActivity extends AppCompatActivity {
+import org.w3c.dom.Text;
 
-    Uri uri = null;
+import java.text.DateFormat;
+import java.util.Calendar;
+
+public class getUserInfoActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
     String month_string;
     String day_string;
     String year_string;
+
+    int hour;
+    int min;
+    String ampm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +67,7 @@ public class getUserInfoActivity extends AppCompatActivity {
         greetText.setText("Hi! Nice to meet you.\n I have some questions.");
         TextView userNameInput = (TextView)findViewById(R.id.userName);
         TextView surgeryDateInput = (TextView)findViewById(R.id.surgeryDateInput);
-
+        TextView textView=(TextView) findViewById(R.id.textView5);
 
         Button nextBtn = (Button)findViewById(R.id.nextBtn);
         nextBtn.setOnClickListener(new View.OnClickListener() {
@@ -57,19 +78,21 @@ public class getUserInfoActivity extends AppCompatActivity {
                     if(userNameInput.getText().length()<1 || userNameInput.getText().length()>9){
                         Toast.makeText(getApplicationContext(), "Please enter your name with 1-8 characters!", Toast.LENGTH_LONG).show();
                     }
-                    else if(uri == null){
-                        Toast.makeText(getApplicationContext(), "Please enter your profile image!", Toast.LENGTH_LONG).show();
-                    }
                     else if(surgeryDateInput.getText()==""){
                         Toast.makeText(getApplicationContext(), "Please enter your surgery date!", Toast.LENGTH_LONG).show();
                     }
+                    else if(textView.getText().equals(""))
+                    {
+                        Toast.makeText(getApplicationContext(), "Please enter your surgery time!", Toast.LENGTH_LONG).show();
+                    }
                     else {
                         UserData newUserData = new UserData();
-                        newUserData.setUserData(userNameInput.getText().toString(), uri.toString(), Integer.parseInt(year_string), Integer.parseInt(month_string), Integer.parseInt(day_string));
+                        newUserData.setUserData(userNameInput.getText().toString(), Integer.parseInt(year_string), Integer.parseInt(month_string), Integer.parseInt(day_string), ampm, hour, min );
                         db.userDao().insert(newUserData);
 
                         Intent intent = new Intent(getApplicationContext(), getEyedropInfoActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 }
             }
@@ -85,16 +108,16 @@ public class getUserInfoActivity extends AppCompatActivity {
             }
         );
 
-        ImageButton userImage = (ImageButton) findViewById(R.id.userImageBtn);
-        userImage.setOnClickListener(new View.OnClickListener() {
-            //called when Next Button is Clicked
+        ImageButton timePicker = (ImageButton) findViewById(R.id.timePicker1);
+        timePicker.setOnClickListener(new View.OnClickListener(){
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_PICK);
-                intent.setType("image/*");
-                startActivityForResult(intent, 1);
+            public void onClick(View v){
+                DialogFragment timePicker = new TimePickerFragment();
+                timePicker.show(getSupportFragmentManager(), "time picker");
             }
         });
+
+
     }
 
     public void showDatePicker(View view) {
@@ -113,17 +136,31 @@ public class getUserInfoActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, hourOfDay);
+        c.set(Calendar.MINUTE, minute);
+        c.set(Calendar.SECOND, 0);
 
-        switch(requestCode) {
-            case 1:
-                if (resultCode == RESULT_OK) {
-                    ImageButton userImageBtn = (ImageButton) findViewById(R.id.userImageBtn);
-                    uri = data.getData();
-                    userImageBtn.setImageURI(uri);
-                }
+        hour=hourOfDay;
+        min=minute;
+        int tmp=c.get(Calendar.AM_PM);
+        switch (tmp){
+            case Calendar.AM:
+                ampm="AM";
+                break;
+            case Calendar.PM:
+                ampm="PM";
                 break;
         }
+
+        updateTimeText(c);
+    }
+
+    private void updateTimeText(Calendar c){
+        TextView textView=(TextView) findViewById(R.id.textView5);
+        String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
+        textView.setText(timeText);
+
     }
 }

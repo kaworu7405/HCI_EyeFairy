@@ -76,7 +76,7 @@ public class AlarmAdapter extends BaseAdapter {
         interval.setText(Integer.toString(alarm.get(i).getIntervalH())+"h "+alarm.get(i).getIntervalM()+"m");
         times.setText(Integer.toString(alarm.get(i).getHowManyTimes())+" times for "+ Integer.toString(alarm.get(i).getHowManyDays()) +" days" );
         String str=Integer.toString(alarm.get(i).getMin());
-        if(alarm.get(i).getMin()==0 || alarm.get(i).getMin()==5){
+        if(alarm.get(i).getMin()>=0 && alarm.get(i).getMin()<=9){
             str="0"+str;
         }
         start.setText(Integer.toString(alarm.get(i).getHour())+" : "+ str +" "+alarm.get(i).getAmPm());

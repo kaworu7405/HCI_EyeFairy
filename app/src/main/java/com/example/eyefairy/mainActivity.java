@@ -1,12 +1,12 @@
 package com.example.eyefairy;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -28,12 +28,15 @@ import java.util.Calendar;
 import com.example.eyefairy.RecordFunction.recordMainActivity;
 
 public class mainActivity extends AppCompatActivity {
+    public static Context context;
     // 현재 날짜를 알기 위해 사용
     UserDB db=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        context = this;
 
         init();
 
@@ -111,8 +114,6 @@ public class mainActivity extends AppCompatActivity {
 
             mmonth -= 1; // 받아온날자에서 -1을 해줘야함.
             ddayCal.set(myear,mmonth,mday);// D-day의 날짜를 입력
-            Log.e("테스트",simpleDateFormat.format(todaCal.getTime()) + "");
-            Log.e("테스트",simpleDateFormat.format(ddayCal.getTime()) + "");
 
             long today = todaCal.getTimeInMillis()/86400000; //->(24 * 60 * 60 * 1000) 24시간 60분 60초 * (ms초->초 변환 1000)
             long dday = ddayCal.getTimeInMillis()/86400000;

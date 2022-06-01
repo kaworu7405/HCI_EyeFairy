@@ -42,9 +42,9 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         String eyedropName = intent.getStringExtra("eyedropName");
         int requestCode = intent.getIntExtra("requestCode", 0);
-        Log.e("RequestCode", Integer.toString(requestCode));
+        //Log.e("RequestCode", Integer.toString(requestCode));
 
-        Intent busRouteIntent = new Intent(context, getEyedropInfoActivity.class);
+        Intent busRouteIntent = new Intent(context, alarmMainActivity.class);
 
 
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
@@ -72,7 +72,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
 
         int id=(int)System.currentTimeMillis();
-        Log.e("id", Integer.toString(id));
+        //Log.e("id", Integer.toString(id));
 
         notificationManager.notify(id,notificationBuilder.build());
     }

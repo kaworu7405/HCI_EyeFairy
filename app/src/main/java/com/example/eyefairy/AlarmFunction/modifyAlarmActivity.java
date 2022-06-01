@@ -23,8 +23,8 @@ import java.text.DateFormat;
 import java.util.Calendar;
 
 public class modifyAlarmActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener {
-    int hour=1;
-    int min=0;
+    int hour;
+    int min;
     String ampm="AM";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,8 @@ public class modifyAlarmActivity extends AppCompatActivity implements TimePicker
         setContentView(R.layout.activity_modify_eyedrop);
 
         AlarmData data = (AlarmData)getIntent().getSerializableExtra("data");
+        hour=data.getHour();
+        min=data.getMin();
         TextView eyeDropNameEdit=(TextView)findViewById(R.id.eyeDropNameEdit);
         eyeDropNameEdit.setText(data.getName());
         TextView eyeDropIntervalHEdit=(TextView)findViewById(R.id.eyeDropIntervalHEdit2);

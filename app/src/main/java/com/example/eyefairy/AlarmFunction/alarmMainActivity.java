@@ -32,6 +32,8 @@ import java.util.Calendar;
 import java.util.List;
 
 public class alarmMainActivity extends AppCompatActivity {
+    public static Context context;
+
     ListView listview = null;
     int itemPosition;
     List<AlarmData> alarmDataList;
@@ -41,6 +43,8 @@ public class alarmMainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alram_main);
+
+        context=this;
 
         alarmDB=alarmDB.getInstance(this);
         this.InitializeAlarmData();
@@ -52,7 +56,6 @@ public class alarmMainActivity extends AppCompatActivity {
             //called when Finish Button is Clicked
             @Override
             public void onClick(View view) {
-                Log.e("테스트", "ccccc");
                 Intent intent = new Intent(alarmMainActivity.this, addAlarmActivity.class);
                 startActivityForResult(intent, 1234);
             }
@@ -79,20 +82,35 @@ public class alarmMainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1234 && resultCode == RESULT_OK){
             AlarmData alarmData=(AlarmData) data.getSerializableExtra("newAlarm");
+
             adapter.add(alarmData);
             adapter.notifyDataSetChanged();
             alarmDB.alarmDao().insert(alarmData);
-
-            setAlarm(alarmData);
-
+            setAlarm(alarmDB.alarmDao().getAll().get(alarmDB.alarmDao().getAll().size()-1));
         }else if(requestCode == 5678 && resultCode == RESULT_OK){
             AlarmData alarmData=(AlarmData) data.getSerializableExtra("modifiedData");
+
+            AlarmManager alarmManager=(AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
+            Intent intent = new Intent(this, AlarmReceiver.class);
+            int i=0;
+
+            for(int k=0; k<(alarmDB.alarmDao().getAll().get(itemPosition).getHowManyDays()+1); k++){
+                for(int j=0; j<alarmDB.alarmDao().getAll().get(itemPosition).getHowManyTimes(); j++,i++) {
+                    int rc =  alarmDB.alarmDao().getAll().get(itemPosition).getKey()*30 + i;
+                    //Log.e("cancel RC", Integer.toString(rc));
+                    PendingIntent cancelIntent = PendingIntent.getBroadcast(this, rc, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                    alarmManager.cancel(cancelIntent);
+                }
+            }
+
+            alarmData.setKey(alarmDB.alarmDao().getAll().get(itemPosition).getKey());
             alarmDB.alarmDao().update(alarmData);
+            //Log.e("checkalarmData", Integer.toString(alarmData.getHowManyTimes()));
+            //Log.e("checkDB", Integer.toString(alarmDB.alarmDao().getAll().get(itemPosition).getHowManyTimes()));
             adapter.update(itemPosition, alarmData);
             adapter.notifyDataSetChanged();
 
-
-            setAlarm(alarmData);
+            setAlarm(alarmDB.alarmDao().getAll().get(itemPosition));
         }
 
 
@@ -122,19 +140,25 @@ public class alarmMainActivity extends AppCompatActivity {
             case 0: //delete
                 AlarmManager alarmManager=(AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
                 intent = new Intent(this, AlarmReceiver.class);
-                for(int i=0; i<adapter.getItem(itemPosition).getHowManyTimes(); i++) {
-                    int requestCode = adapter.getItem(itemPosition).getKey()*8 + i;
-                    PendingIntent cancelIntent = PendingIntent.getBroadcast(alarmMainActivity.this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                    alarmManager.cancel(cancelIntent);
-                }
+                int i=0;
 
-                alarmDB.alarmDao().delete(adapter.getItem(itemPosition));
+                for(int k=0; k<(adapter.getItem(itemPosition).getHowManyDays()+1); k++){
+                    for(int j=0; j<adapter.getItem(itemPosition).getHowManyTimes(); j++,i++) {
+                        int rc =  alarmDB.alarmDao().getAll().get(itemPosition).getKey()*30 + i ;
+                        //Log.e("delete reqeustCode", Integer.toString(rc));
+                        PendingIntent cancelIntent = PendingIntent.getBroadcast(this, rc, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                        alarmManager.cancel(cancelIntent);
+                    }
+                }
+                //Log.e("name", alarmDB.alarmDao().getAll().get(itemPosition).getName());
+                //Log.e("size", Integer.toString(alarmDB.alarmDao().getAll().size()));
+                alarmDB.alarmDao().delete(alarmDB.alarmDao().getAll().get(itemPosition));
+
                 adapter.delete(itemPosition);
                 adapter.notifyDataSetChanged();
-
                 break;
 
-            case 1:
+            case 1: //modify
                 intent = new Intent(alarmMainActivity.this, modifyAlarmActivity.class);
                 intent.putExtra("data", adapter.getItem(itemPosition));
                 startActivityForResult(intent, 5678);
@@ -162,35 +186,27 @@ public class alarmMainActivity extends AppCompatActivity {
         calendar.set(Calendar.HOUR_OF_DAY, alarmData.getHour());
         calendar.set(Calendar.MINUTE, alarmData.getMin());
 
-        boolean check = false;
-
         int i=0;
         for(; i<alarmData.getHowManyTimes(); i++){
+            if(Calendar.getInstance().get(Calendar.MONTH)==(userData.getSurgeryMonth()-1)&&
+                    Calendar.getInstance().get(Calendar.DAY_OF_MONTH)==userData.getSurgeryDay() &&
+                    userData.getSurgery_hour()>=calendar.get(Calendar.HOUR_OF_DAY)&&
+                    userData.getSurgery_min()>=calendar.get(Calendar.MINUTE)){
+                calendar.add(Calendar.HOUR_OF_DAY, alarmData.getIntervalH());
+                calendar.add(Calendar.MINUTE, alarmData.getIntervalM());
+                continue;
+            }
+
             Intent intent = new Intent(this, AlarmReceiver.class);
             intent.putExtra("eyedropName", alarmData.getName());
-            intent.putExtra("requestCode", (alarmData.getKey()*8 + i));
-            int requestCode = alarmData.getKey()*8 + i;
-
-            PendingIntent alarmIntent = PendingIntent.getBroadcast(this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-            if(userData.getSurgery_hour()>=calendar.get(Calendar.HOUR_OF_DAY)&&
-                    userData.getSurgery_min()>=calendar.get(Calendar.MINUTE)){
-                if(!check){
-                    Log.e("date", Integer.toString(userData.getSurgery_hour()));
-                    calendar.add(Calendar.DAY_OF_MONTH, 1);
-                    check=true;
-                }
-                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                        alarmIntent);
-            }
-            else {
-                if(check){
-                    calendar.add(Calendar.DAY_OF_MONTH, -1);
-                    check=false;
-                }
-                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                        alarmIntent);
-            }
-            Log.e("date", calendar.getTime().toString());
+            intent.putExtra("requestCode", (alarmData.getKey()*30 + i));
+            int requestCode = alarmData.getKey()*30 + i;
+            PendingIntent alarmIntent = PendingIntent.getBroadcast(this
+                    , requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+            //Log.e("reqeustCode", Integer.toString((alarmData.getKey()*30 + i)));
+            //Log.e("date", calendar.getTime().toString());
+            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                    alarmIntent);
 
             calendar.add(Calendar.HOUR_OF_DAY, alarmData.getIntervalH());
             calendar.add(Calendar.MINUTE, alarmData.getIntervalM());
@@ -204,22 +220,17 @@ public class alarmMainActivity extends AppCompatActivity {
             for(int k=0; k<alarmData.getHowManyTimes(); k++, i++){
                 Intent intent = new Intent(this, AlarmReceiver.class);
                 intent.putExtra("eyedropName", alarmData.getName());
-                intent.putExtra("requestCode", (alarmData.getKey()*8 + i));
-                int requestCode = alarmData.getKey()*8 + i;
+                intent.putExtra("requestCode", (alarmData.getKey()*30 + i));
+                int requestCode = alarmData.getKey()*30 + i;
 
                 PendingIntent alarmIntent = PendingIntent.getBroadcast(this, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
-                Log.e("date", calendar.getTime().toString());
+                //Log.e("reqeustCode", Integer.toString((alarmData.getKey()*30 + i)));
+                //Log.e("date", calendar.getTime().toString());
                 calendar.add(Calendar.HOUR_OF_DAY, alarmData.getIntervalH());
                 calendar.add(Calendar.MINUTE, alarmData.getIntervalM());
             }
             calendar.add(Calendar.DAY_OF_MONTH, 1);
         }
-
-
     }
-
-
-
-
 }

@@ -86,7 +86,7 @@ public class AlarmData implements Serializable {
     public void setIntervalH(int _intervalH) {
         intervalH=_intervalH;
     }
-
+    public void setKey(int _key){key=_key;}
     public void setIntervalM(int _intervalM) {
         intervalM=_intervalM;
     }

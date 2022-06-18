@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.example.eyefairy.DB.UserDB;
 import com.example.eyefairy.DB.UserData;
 import com.example.eyefairy.Fragment.TimePickerFragment;
@@ -47,8 +48,9 @@ public class getUserInfoActivity extends AppCompatActivity implements TimePicker
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        startActivity(new Intent(this, splash.class));
         setContentView(R.layout.activity_get_user_info);
-
+        //TypefaceProvider.registerCustomIconSet();
         UserDB db = UserDB.getInstance(this);
 
         /*

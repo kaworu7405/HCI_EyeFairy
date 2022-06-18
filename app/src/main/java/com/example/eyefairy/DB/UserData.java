@@ -1,4 +1,5 @@
 package com.example.eyefairy.DB;
+import java.util.ArrayList;
 
 import android.net.Uri;
 
@@ -16,10 +17,12 @@ public class UserData implements Serializable {
         surgery_year=_surgery_year;
         surgery_month=_surgery_month;
         surgery_day=_surgery_day;
-
         surgery_ampm=_surgery_ampm;
         surgery_hour=_surgery_hour;
         surgery_min=_surgery_min;
+
+        //this.left_eye_sight = new ArrayList(); // 왼쪽 시력 정보 저장
+        //this.right_eye_sight = new ArrayList(); //오른쪽 시력 정보 저장
     }
 
     public String getUserName(){

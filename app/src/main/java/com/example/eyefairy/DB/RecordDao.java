@@ -1,5 +1,4 @@
 package com.example.eyefairy.DB;
-
 import static androidx.room.OnConflictStrategy.REPLACE;
 
 import androidx.room.Dao;
@@ -9,19 +8,19 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
-
 @Dao
-public interface AlarmDao {
+public interface RecordDao {
+
     @Insert(onConflict = REPLACE)
-    public void insert(AlarmData data);
+    public void insert(RecordData data);
 
     @Query("SELECT * FROM table_name")
-    public List<AlarmData> getAll();
+    public List<RecordData> getAll();
 
     @Delete
-    public void delete(AlarmData data);
+    public void delete(RecordData data);
 
     @Update
-    public void update(AlarmData data);
+    public void update(RecordData data);
 
 }

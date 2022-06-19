@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#BEEFF4E7"
+    android:background="@color/white"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -16,13 +16,15 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="300dp"
             android:layout_marginTop="10dp"
+            android:weightSum="2"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/imageView4"
+                android:layout_weight="1"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:srcCompat="@android:drawable/presence_audio_online" />
+                android:background="@drawable/mic" />
 
             <Switch
                 android:id="@+id/switch1"
@@ -37,20 +39,23 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="#BCB5B5">
+
+            android:layout_marginTop="40dp"
+
+            android:layout_marginBottom="15dp"
+            android:background="#BEEFF4E7">
 
             <TextView
                 android:id="@+id/userInfoTxt"
+                android:fontFamily="@font/cookierunregular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:text="D+2\n2022.04.28"
-                android:textSize="25dp" />
+                android:textSize="24dp" />
 
         </FrameLayout>
 
@@ -63,6 +68,8 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:layout_marginLeft="10dp"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -74,14 +81,16 @@
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@drawable/edit_round"
+                    android:background="@drawable/alarm2"
                     android:foregroundGravity="center"
-                    app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+                    />
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/cookierunregular"
+                    android:textColor="#000000"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="Alarm"
@@ -89,6 +98,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -100,9 +110,10 @@
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@drawable/edit_round"
+
+                    android:background="@drawable/radio2"
                     android:foregroundGravity="center"
-                    app:srcCompat="@android:drawable/ic_menu_slideshow" />
+                     />
 
                 <TextView
                     android:id="@+id/textView10"
@@ -110,6 +121,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:fontFamily="@font/cookierunregular"
+                    android:textColor="#000000"
                     android:text="Radio"
                     android:textSize="20dp" />
             </LinearLayout>
@@ -125,6 +138,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
+                android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -136,15 +150,17 @@
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@drawable/edit_round"
+                    android:background="@drawable/eyecare"
                     android:foregroundGravity="center"
-                    app:srcCompat="@android:drawable/ic_menu_info_details" />
+                     />
 
                 <TextView
                     android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
+                    android:textColor="#000000"
                     android:gravity="center"
                     android:text="care"
                     android:textSize="20dp" />
@@ -154,6 +170,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_marginRight="10dp"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -162,9 +179,9 @@
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:background="@drawable/edit_round"
+                    android:background="@drawable/record"
                     android:foregroundGravity="center"
-                    app:srcCompat="@android:drawable/ic_menu_edit" />
+                     />
 
                 <TextView
                     android:id="@+id/textView12"
@@ -172,6 +189,8 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:fontFamily="@font/cookierunregular"
+                    android:textColor="#000000"
                     android:text="record"
                     android:textSize="20dp" />
             </LinearLayout>

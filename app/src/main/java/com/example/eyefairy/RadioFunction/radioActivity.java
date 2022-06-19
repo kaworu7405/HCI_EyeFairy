@@ -33,8 +33,6 @@ public class radioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_radio);
 
-        turnScreenOffAndExit();
-
         webView = (WebView) findViewById(R.id.web_view);
         webView.loadUrl(url);
         WebSettings webSettings = webView.getSettings();

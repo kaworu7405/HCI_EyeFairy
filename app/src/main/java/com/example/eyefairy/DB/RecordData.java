@@ -9,9 +9,9 @@ import java.io.Serializable;
 
 @Entity(tableName = "table_name")
 public class RecordData implements Serializable {
-    public RecordData(String Date, int leftEyeSight, int rightEyeSight){
+    public RecordData(String date, float leftEyeSight, float rightEyeSight){
 
-        this.Date = Date;
+        this.date = date;
         this.leftEyeSight=leftEyeSight;
         this.rightEyeSight=rightEyeSight;
     }
@@ -21,21 +21,28 @@ public class RecordData implements Serializable {
     @PrimaryKey(autoGenerate = true)
     int key;
     @ColumnInfo(name = "Date")
-    private String Date;
+    private String date;
     @ColumnInfo(name = "leftEyeSight")
-    private int leftEyeSight;
+    private float leftEyeSight;
     @ColumnInfo(name = "rightEyeSight")
-    private int rightEyeSight;
+    private float rightEyeSight;
+
+    public int getKey(){return key;}
 
     public String getDate() {
-        return this.Date;
+        return this.date;
     }
-    public int getLeftEyeSight() {
+    public float getLeftEyeSight() {
         return this.leftEyeSight;
     }
-    public int getRightEyeSight()
+    public float getRightEyeSight()
     {
         return this.rightEyeSight;
     }
+
+    public void setDate(String _date) {date=_date;}
+    public void setLeftEyeSight(float _leftEyeSight){leftEyeSight=_leftEyeSight;}
+    public void setRightEyeSight(float _rightEyeSight) {rightEyeSight=_rightEyeSight;}
+    public void setKey(int _key){key=_key;}
 
 }

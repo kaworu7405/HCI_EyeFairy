@@ -111,6 +111,5 @@ public class addAlarmActivity extends AppCompatActivity implements TimePickerDia
         TextView textView=(TextView) findViewById(R.id.textView6);
         String timeText = DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
         textView.setText(timeText);
-
     }
 }

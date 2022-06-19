@@ -14,7 +14,7 @@ public interface RecordDao {
     @Insert(onConflict = REPLACE)
     public void insert(RecordData data);
 
-    @Query("SELECT * FROM table_name")
+    @Query("SELECT * FROM table_name ORDER BY DATE DESC")
     public List<RecordData> getAll();
 
     @Delete

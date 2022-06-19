@@ -8,7 +8,8 @@ import androidx.room.RoomDatabase;
 @Database(entities = {RecordData.class}, version = 1, exportSchema = false)
 public abstract class RecordDB extends RoomDatabase
 {
-    public abstract RecordDao RecordDao();
+
+    public abstract RecordDao recordDao();
     private static RecordDB INSTANCE;
 
     public synchronized static RecordDB getInstance(Context context)

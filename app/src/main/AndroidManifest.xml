@@ -20,7 +20,7 @@
 
 
         <activity
-            android:name=".blackActivity"
+            android:name=".RadioFunction.blackActivity"
             android:exported="false" />
         <activity
             android:name=".splash"
@@ -42,10 +42,14 @@
         </activity>
         <activity android:name=".getEyedropInfoActivity" />
         <activity android:name=".getUserInfoActivity" />
+        <activity android:name=".RecordFunction.recordAddActivity" />
         <activity android:name=".AlarmFunction.addAlarmActivity" />
         <activity android:name=".RadioFunction.radioActivity" />
         <activity android:name=".AlarmFunction.modifyAlarmActivity" />
-        <activity android:name=".RecordFunction.recordAddActivity" />
+        <activity android:name=".RecordFunction.recordModifyActivity" />
+
+
+
 
         <receiver android:name=".AlarmFunction.AlarmReceiver" />
 

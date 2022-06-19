@@ -33,8 +33,8 @@ import java.util.List;
 
 public class alarmMainActivity extends AppCompatActivity {
     public static Context context;
-
     ListView listview = null;
+
     int itemPosition;
     List<AlarmData> alarmDataList;
     AlarmDB alarmDB=null;

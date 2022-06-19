@@ -116,16 +116,10 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/record_eyesight_submit"
-        android:text="SAVE"
+        android:id="@+id/record_eyesight_modify"
+        android:text="MODIFY"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="60dp">
-
-
     </Button>
-
-
-
-
 </LinearLayout>

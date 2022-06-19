@@ -1,30 +1,27 @@
 package com.example.eyefairy.RecordFunction;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
-
-import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
 import com.example.eyefairy.DB.RecordData;
 import com.example.eyefairy.DB.UserDB;
 import com.example.eyefairy.DB.UserData;
-import com.example.eyefairy.Fragment.TimePickerFragment;
 import com.example.eyefairy.Fragment.datePickerFragment;
 import com.example.eyefairy.Fragment.datePickerFragment_record;
+import com.example.eyefairy.Fragment.datePickerFramget_modifyRecord;
 import com.example.eyefairy.R;
 
-import java.text.DateFormat;
-import java.util.Calendar;
+import org.w3c.dom.Text;
 
-public class recordAddActivity extends AppCompatActivity{
+public class recordModifyActivity extends AppCompatActivity {
     String month_string;
     String day_string;
     String year_string;
@@ -33,35 +30,40 @@ public class recordAddActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record_add);
-
+        setContentView(R.layout.activity_record_modify);
         EditText left_eye_text = (EditText)findViewById(R.id.left_eys_sight);
         EditText right_eye_text = (EditText)findViewById(R.id.right_eye_sight);
         TextView date_text=(TextView)findViewById(R.id.checkDateTextView);
+
+        RecordData data = (RecordData)getIntent().getSerializableExtra("data");
+        left_eye_text.setText(Float.toString(data.getLeftEyeSight()));
+        right_eye_text.setText(Float.toString(data.getRightEyeSight()));
+        date_text.setText(data.getDate());
+
         float left_eye_float;
         float right_eye_float;
 
-        Button submit_btn = findViewById(R.id.record_eyesight_submit);
+        Button modify_btn = findViewById(R.id.record_eyesight_modify);
         Button insert_date_btn = findViewById(R.id.insertDateBtn);
-
-        submit_btn.setOnClickListener(new View.OnClickListener() {
+        modify_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
                     if(left_eye_text.getText().toString().isEmpty()||right_eye_text.getText().toString().isEmpty()){
-                        Toast.makeText(recordAddActivity.this, "Please fill it all out!",  Toast.LENGTH_SHORT).show();
+                        Toast.makeText(recordModifyActivity.this, "Please fill it all out!",  Toast.LENGTH_SHORT).show();
                     }
                     else{
-
-                        RecordData newRecord=new RecordData(date_text.getText().toString(), Float.parseFloat(left_eye_text.getText().toString()), Float.parseFloat(right_eye_text.getText().toString()));
+                        data.setDate(date_text.getText().toString());
+                        data.setLeftEyeSight(Float.parseFloat(left_eye_text.getText().toString()));
+                        data.setRightEyeSight(Float.parseFloat(right_eye_text.getText().toString()));
 
                         Intent intent=new Intent();
-                        intent.putExtra("newRecord", newRecord);
+                        intent.putExtra("modifiedData", data);
                         setResult(RESULT_OK, intent);
                         finish();
                     }
                 }catch (Exception exception){
-                    Toast.makeText(recordAddActivity.this, "시력을 정확하게 입력해주세요",  Toast.LENGTH_SHORT).show();
+                    Toast.makeText(recordModifyActivity.this, "시력을 정확하게 입력해주세요",  Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -77,12 +79,11 @@ public class recordAddActivity extends AppCompatActivity{
     }
 
     public void showDatePicker(View view) {
-        DialogFragment newFragment = new datePickerFragment_record();
+        DialogFragment newFragment = new datePickerFramget_modifyRecord();
         newFragment.show(getSupportFragmentManager(),"datePicker");
     }
 
     public void processDatePickerResult(int year, int month, int day){
-
         month_string = Integer.toString(month+1);
         day_string = Integer.toString(day);
         year_string = Integer.toString(year);

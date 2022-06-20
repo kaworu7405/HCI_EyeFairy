@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="@color/teal_200"
+            android:fontFamily="@font/cookierunbold"
             android:gravity="center"
             android:text="Alarm"
             android:textColor="@color/white"
@@ -38,7 +39,11 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            app:srcCompat="@android:drawable/ic_input_add" />
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/plusbtn"
+            tools:srcCompat="@drawable/plusbtn" />
 
     </LinearLayout>
 

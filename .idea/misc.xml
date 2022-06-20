@@ -8,22 +8,15 @@
         <entry key="..\:/Users/ghdtj/hci/HCI_EyeFairy/app/src/main/res/layout/activity_record_main.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/drawable-v24/edit_round.xml" value="0.242" />
         <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_alram_main.xml" value="0.27445652173913043" />
-        <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_black.xml" value="0.1490036231884058" />
         <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_get_eyedrop_info.xml" value="0.25" />
         <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_get_user_info.xml" value="0.25" />
-        <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_main.xml" value="0.18" />
-        <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_modify_eyedrop.xml" value="0.2617753623188406" />
-        <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_radio.xml" value="0.1490036231884058" />
-        <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_record_add.xml" value="0.17806484295845998" />
-        <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_record_main.xml" value="0.2617753623188406" />
-        <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_record_modify.xml" value="0.2617753623188406" />
+        <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/activity_main.xml" value="0.1078125" />
         <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/alarm_info.xml" value="0.21283783783783783" />
-        <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/device_admin.xml" value="0.2617753623188406" />
-        <entry key="..\:/Users/hong/AND/HCI_EyeFairy/app/src/main/res/layout/record_info.xml" value="0.2617753623188406" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/drawable-v24/edit_round.xml" value="0.22083333333333333" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/drawable/silhouette_xml.xml" value="0.32974358974358975" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_add_new_eyedrop.xml" value="0.26" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_alram_main.xml" value="0.25" />
+        <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_black.xml" value="0.16394927536231885" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_get_eyedrop_info.xml" value="0.3033175355450237" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_get_user_info.xml" value="0.22" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_main.xml" value="0.31875" />
@@ -31,8 +24,10 @@
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_radio.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_record_add.xml" value="0.33" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_record_main.xml" value="0.1946082561078349" />
-        <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_record_modify.xml" value="0.2265625" />
+        <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_record_modify.xml" value="0.33" />
+        <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/activity_splash.xml" value="0.16394927536231885" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/alarm_info.xml" value="0.33" />
+        <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/device_admin.xml" value="0.16394927536231885" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/main_list_menu.xml" value="0.13956433637284701" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/layout/record_info.xml" value="0.20742753623188406" />
         <entry key="..\:/Users/jina0/AndroidStudioProjects/EyeFairy/app/src/main/res/menu/eyedrop_menu.xml" value="0.26666666666666666" />

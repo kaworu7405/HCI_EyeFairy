@@ -48,7 +48,8 @@ public class recordAddActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 try {
-                    if(left_eye_text.getText().toString().isEmpty()||right_eye_text.getText().toString().isEmpty()){
+                    if(left_eye_text.getText().toString().isEmpty()||right_eye_text.getText().toString().isEmpty()||
+                    date_text.getText().toString().isEmpty()){
                         Toast.makeText(recordAddActivity.this, "Please fill it all out!",  Toast.LENGTH_SHORT).show();
                     }
                     else{

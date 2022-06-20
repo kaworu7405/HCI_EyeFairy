@@ -14,6 +14,7 @@
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:background="#4CAF50"
+            android:fontFamily="@font/cookierunregular"
             android:gravity="center"
             android:text="Modify eye drop"
             android:textColor="#FFFFFF"
@@ -35,6 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:focusable="true"
+                android:fontFamily="@font/cookierunregular"
                 android:gravity="right"
                 android:text="antibiotic"
                 android:textSize="18dp" />
@@ -50,6 +52,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="center"
                     android:padding="2dp"
                     android:text="Name"
@@ -64,6 +67,7 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:focusable="true"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="center"
                     android:hint="Please enter name"
                     android:inputType="textPersonName"
@@ -82,6 +86,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="center"
                     android:padding="2dp"
                     android:text="Interval"
@@ -95,6 +100,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="right"
                     android:hint="h"
                     android:inputType="number"
@@ -107,6 +113,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="right"
                     android:hint="m"
                     android:inputType="number"
@@ -125,6 +132,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="center"
                     android:padding="2dp"
                     android:text="How many times"
@@ -138,6 +146,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="right"
                     android:hint="a day"
                     android:inputType="number"
@@ -158,6 +167,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="center"
                     android:padding="2dp"
                     android:text="How many days"
@@ -171,6 +181,7 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="right"
                     android:hint="a day"
                     android:inputType="number"
@@ -190,6 +201,7 @@
                     android:layout_width="170dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="center"
                     android:padding="2dp"
                     android:text="Start time"
@@ -201,6 +213,7 @@
                     android:layout_width="220dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
                     android:gravity="center"
                     android:textSize="18dp" />
 
@@ -209,7 +222,8 @@
                     android:layout_width="80dp"
                     android:layout_height="60dp"
                     android:layout_weight="1"
-                    app:srcCompat="@android:drawable/ic_lock_idle_alarm" />
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/time_icon" />
 
             </LinearLayout>
 
@@ -222,6 +236,7 @@
                 android:layout_marginEnd="10dp"
                 android:height="20dp"
                 android:background="@drawable/edit_round"
+                android:fontFamily="@font/cookierunbold"
                 android:text="MODIFY"
                 android:textColor="@color/white"
                 android:textSize="20dp" />

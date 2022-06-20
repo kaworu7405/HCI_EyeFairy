@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import com.example.eyefairy.Adapter.RecordAdapter;
@@ -56,30 +57,64 @@ public class recordMainActivity extends AppCompatActivity {
         this.InitializeRecordData();
         this.registerForContextMenu(listview);
 
+        makeChart();
+
+        ImageButton record_add = (ImageButton) findViewById(R.id.record_add_btn);
+
+        record_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), recordAddActivity.class);
+                startActivityForResult(intent, 1234);
+            }
+        });
+    }
+
+    public void makeChart()
+    {
         lineChart = (LineChart) findViewById(R.id.chart);
-        List<Entry> entries = new ArrayList<>();
+        List<Entry> entry1 = new ArrayList<>();
+        List<Entry> entry2 = new ArrayList<>();
 
-        entries.add(new Entry(0, 0));
-        entries.add(new Entry(0, 100));
-        entries.add(new Entry(3, 3));
-        entries.add(new Entry(4, 4));
-        entries.add(new Entry(5, 5));
+        if(recordDataList.size()==0){
+            entry1.add(new Entry(0, 0));
+            entry2.add(new Entry(0, 0));
+        }
+        for(int i=0, j=recordDataList.size()-1; i<recordDataList.size(); i++, j--){
+            entry1.add(new Entry(i, recordDataList.get(j).getLeftEyeSight()));
+            entry2.add(new Entry(i, recordDataList.get(j).getRightEyeSight()));
+        }
 
-        LineDataSet lineDataSet = new LineDataSet(entries, "속성명1");
-        lineDataSet.setLineWidth(2);
-        lineDataSet.setCircleRadius(6);
-        lineDataSet.setCircleColor(Color.parseColor("#FFA1B4DC"));
-        lineDataSet.setCircleHoleColor(23);
-        lineDataSet.setColor(Color.parseColor("#FFA1B4DC"));
-        lineDataSet.setDrawCircleHole(true);
-        lineDataSet.setDrawCircles(true);
-        lineDataSet.setDrawHorizontalHighlightIndicator(false);
-        lineDataSet.setDrawHighlightIndicators(false);
-        lineDataSet.setDrawValues(false);
+        LineDataSet lineDataSet1 = new LineDataSet(entry1, "LeftEyeSight");
+        lineDataSet1.setLineWidth(2);
+        lineDataSet1.setCircleRadius(6);
+        lineDataSet1.setCircleColor(Color.parseColor("#FFA1B4DC"));
+        lineDataSet1.setCircleHoleColor(23);
+        lineDataSet1.setColor(Color.parseColor("#FFA1B4DC"));
+        lineDataSet1.setDrawCircleHole(true);
+        lineDataSet1.setDrawCircles(true);
+        lineDataSet1.setDrawHorizontalHighlightIndicator(false);
+        lineDataSet1.setDrawHighlightIndicators(false);
+        lineDataSet1.setDrawValues(false);
+
+        LineDataSet lineDataSet2 = new LineDataSet(entry2, "RightEyeSight");
+        lineDataSet2.setLineWidth(2);
+        lineDataSet2.setCircleRadius(6);
+        lineDataSet2.setCircleColor(Color.parseColor("#FFD1B2FF"));
+        lineDataSet2.setCircleHoleColor(23);
+        lineDataSet2.setColor(Color.parseColor("#FFD1B2FF"));
+        lineDataSet2.setDrawCircleHole(true);
+        lineDataSet2.setDrawCircles(true);
+        lineDataSet2.setDrawHorizontalHighlightIndicator(false);
+        lineDataSet2.setDrawHighlightIndicators(false);
+        lineDataSet2.setDrawValues(false);
 
 
-        LineData lineData = new LineData(lineDataSet);
+        LineData lineData = new LineData();
+        lineData.addDataSet(lineDataSet1);
+        lineData.addDataSet(lineDataSet2);
         lineChart.setData(lineData);
+
 
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -103,15 +138,6 @@ public class recordMainActivity extends AppCompatActivity {
         lineChart.animateY(2000, Easing.EaseInCubic);
         lineChart.invalidate();
 
-        Button record_add = (Button) findViewById(R.id.record_add_btn);
-
-        record_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), recordAddActivity.class);
-                startActivityForResult(intent, 1234);
-            }
-        });
     }
 
     public void InitializeRecordData()
@@ -141,6 +167,7 @@ public class recordMainActivity extends AppCompatActivity {
             arrayList.addAll(recordDataList);
             adapter = new RecordAdapter(this, arrayList);
             listview.setAdapter(adapter);
+            makeChart();
 
         }else if(requestCode == 5678 && resultCode == RESULT_OK){
             RecordData recordData=(RecordData) data.getSerializableExtra("modifiedData");
@@ -153,6 +180,7 @@ public class recordMainActivity extends AppCompatActivity {
             arrayList.addAll(recordDataList);
             adapter = new RecordAdapter(this, arrayList);
             listview.setAdapter(adapter);
+            makeChart();
         }
 
     }
@@ -183,6 +211,8 @@ public class recordMainActivity extends AppCompatActivity {
 
                 adapter.delete(itemPosition);
                 adapter.notifyDataSetChanged();
+                recordDataList=recordDB.recordDao().getAll();
+                makeChart();
                 break;
 
             case 1: //modify

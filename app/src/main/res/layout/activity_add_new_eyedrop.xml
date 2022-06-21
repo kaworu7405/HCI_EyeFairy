@@ -11,11 +11,12 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/EcoCookText"
+            android:id="@+id/TextView1"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:background="#4CAF50"
+            android:fontFamily="@font/cookierunregular"
             android:gravity="center"
             android:text="Add new eye drop"
             android:textColor="#FFFFFF"
@@ -23,13 +24,101 @@
             android:textStyle="bold" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="50dp"
             android:foregroundGravity="center|center_horizontal"
             android:gravity="center_horizontal|center_vertical"
             android:orientation="vertical">
+
+            <Switch
+                android:id="@+id/eyedropKindSwitch2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:fontFamily="@font/cookierunregular"
+                android:gravity="right"
+                android:text="antibiotic"
+                android:textSize="18dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="Name"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eyeDropNameEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:focusable="true"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="center"
+                    android:hint="Please enter name"
+                    android:inputType="textPersonName"
+                    android:textColorHint="#9F9494"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="Interval"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eyeDropIntervalHEdit1"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="right"
+                    android:hint="h"
+                    android:inputType="number"
+                    android:textSize="18dp" />
+
+                <EditText
+                    android:id="@+id/eyeDropIntervalMEdit1"
+                    android:layout_width="200dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="right"
+                    android:hint="m"
+                    android:inputType="number"
+                    android:textSize="18dp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,143 +127,105 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textview9"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="How many times"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eyeDropHowManyTimesEdit1"
                     android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="right"
+                    android:hint="a day"
+                    android:inputType="number"
+                    android:textSize="18dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/textview8"
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="How many days"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/eyeDropHowManyDaysEdit1"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:ems="10"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="right"
+                    android:hint="a day"
+                    android:inputType="number"
+                    android:textSize="18dp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="170dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="Start time"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="220dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/cookierunregular"
+                    android:gravity="center"
+                    android:textSize="18dp" />
+
+                <ImageButton
+                    android:id="@+id/timePicker2"
+                    android:layout_width="80dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:weightSum="4">
-
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text="Name"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text="Interval"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text="How many times"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:padding="2dp"
-                        android:text="Start time"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:weightSum="4">
-
-                    <EditText
-                        android:id="@+id/eyeDropNameEdit"
-                        android:layout_width="wrap_content"
-                        android:layout_height="46dp"
-                        android:layout_weight="1"
-                        android:height="20dp"
-                        android:ems="10"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:hint="Please enter name"
-                        android:inputType="textPersonName"
-                        android:textColorHint="#9F9494"
-                        android:textSize="17dp" />
-
-                    <EditText
-                        android:id="@+id/eyeDropIntervalEdit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:height="20dp"
-                        android:ems="10"
-                        android:inputType="number" />
-
-                    <EditText
-                        android:id="@+id/eyeDropHowManyEdit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:height="20dp"
-                        android:ems="10"
-                        android:gravity="right"
-                        android:hint="a day"
-                        android:inputType="number" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:foregroundGravity="center"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:weightSum="3">
-
-                        <Spinner
-                            android:id="@+id/spinner"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:focusable="true"
-                            android:foregroundGravity="center"
-                            android:gravity="center" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:foregroundGravity="center"
-                            android:gravity="center"
-                            android:text=":"
-                            android:textSize="20dp" />
-
-                        <Spinner
-                            android:id="@+id/spinner2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:focusable="true"
-                            android:foregroundGravity="center"
-                            android:gravity="center" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
+                    android:background="@android:color/transparent"
+                    app:srcCompat="@drawable/time_icon" />
 
             </LinearLayout>
 
@@ -187,6 +238,7 @@
                 android:layout_marginEnd="10dp"
                 android:height="20dp"
                 android:background="@drawable/edit_round"
+                android:fontFamily="@font/cookierunbold"
                 android:text="ADD"
                 android:textColor="@color/white"
                 android:textSize="20dp" />

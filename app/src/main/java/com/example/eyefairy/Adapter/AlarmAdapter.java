@@ -5,8 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.eyefairy.R;
@@ -34,6 +33,19 @@ public class AlarmAdapter extends BaseAdapter {
     public void delete(int i){
         alarm.remove(i);
     }
+
+    public void update(int i, AlarmData data)
+    {
+        alarm.get(i).setAmPm(data.getAmPm());
+        alarm.get(i).setHour(data.getHour());
+        alarm.get(i).setHowManyTimes(data.getHowManyTimes());
+        alarm.get(i).setHowManyDays(data.getHowManyDays());
+        alarm.get(i).setIntervalH(data.getIntervalH());
+        alarm.get(i).setIntervalM(data.getIntervalM());
+        alarm.get(i).setMin(data.getMin());
+        alarm.get(i).setName(data.getName());
+        alarm.get(i).setKind(data.getKind());
+    }
     @Override
     public int getCount() {
         return alarm.size();
@@ -55,19 +67,27 @@ public class AlarmAdapter extends BaseAdapter {
 
         TextView eyeDropName = (TextView) view.findViewById(R.id.eyeDropNameText);
         TextView interval = (TextView) view.findViewById(R.id.intervalText);
-        TextView times = (TextView) view.findViewById(R.id.HowManyText);
-        TextView hour = (TextView) view.findViewById(R.id.hourText);
-        TextView min = (TextView) view.findViewById(R.id.minuteText);
+        TextView times = (TextView) view.findViewById(R.id.repeatText);
+        TextView start = (TextView) view.findViewById(R.id.startTimeText);
+        Switch sw =(Switch) view.findViewById(R.id.eyedropKindSwitch) ;
 
 
         eyeDropName.setText(alarm.get(i).getName());
-        interval.setText(Integer.toString(alarm.get(i).getInterval()));
-        times.setText(Integer.toString(alarm.get(i).getHowmany()));
-            //hour.set(alarm.get(i).getName());
-            //min.setText(alarm.get(i).getName());
+        interval.setText(Integer.toString(alarm.get(i).getIntervalH())+"h "+alarm.get(i).getIntervalM()+"m");
+        times.setText(Integer.toString(alarm.get(i).getHowManyTimes())+" times for "+ Integer.toString(alarm.get(i).getHowManyDays()) +" days" );
+        String str=Integer.toString(alarm.get(i).getMin());
+        if(alarm.get(i).getMin()>=0 && alarm.get(i).getMin()<=9){
+            str="0"+str;
+        }
+        start.setText(Integer.toString(alarm.get(i).getHour())+" : "+ str +" "+alarm.get(i).getAmPm());
 
-
-
+        if(alarm.get(i).getKind().equals("antibiotic")){
+            sw.setText("antibiotic");
+            sw.setChecked(false);
+        }else{
+            sw.setText("artificial tears");
+            sw.setChecked(true);
+        }
         return view;
 
     }

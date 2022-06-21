@@ -1,17 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
+    android:weightSum="4"
+    android:keepScreenOn="true"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <WebView
+        android:id="@+id/web_view"
+        android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_weight="3"
+        android:background="#BEEFF4E7"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/coveringBtn"
+            android:layout_margin="20dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_height="match_parent"
+            android:background="#E498DDC2"
+            android:textSize="25dp"
+            android:fontFamily="@font/cookierunbold"
+            android:text="Covering the screen"
+            >
+        </Button>
+
+
+
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

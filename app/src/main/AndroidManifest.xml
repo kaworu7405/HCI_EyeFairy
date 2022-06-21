@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.eyefairy">
+    package="com.example.eyefairy" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.USES_POLICY_FORCE_LOCK" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EyeFairy">
+        android:theme="@style/Theme.EyeFairy"
+        android:usesCleartextTraffic="true" >
+
+
+
         <activity
-            android:name=".recordAddActivity"
+            android:name=".RadioFunction.blackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".splash"
             android:exported="false" />
         <activity
             android:name=".RecordFunction.recordMainActivity"
@@ -20,7 +33,7 @@
             android:exported="false" />
         <activity
             android:name=".mainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,8 +42,37 @@
         </activity>
         <activity android:name=".getEyedropInfoActivity" />
         <activity android:name=".getUserInfoActivity" />
+        <activity android:name=".RecordFunction.recordAddActivity" />
         <activity android:name=".AlarmFunction.addAlarmActivity" />
         <activity android:name=".RadioFunction.radioActivity" />
+        <activity android:name=".AlarmFunction.modifyAlarmActivity" />
+        <activity android:name=".RecordFunction.recordModifyActivity" />
+
+
+
+
+        <receiver android:name=".AlarmFunction.AlarmReceiver" />
+
+        <receiver android:name=".RadioFunction.ScreenOffEventReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".RadioFunction.ScreenOffAdminReceiver"
+            android:description="@string/device_admin_description"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@layout/device_admin" />
+
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

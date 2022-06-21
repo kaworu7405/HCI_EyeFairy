@@ -8,6 +8,7 @@ import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eyefairy.AlarmFunction.alarmMainActivity;
+import com.example.eyefairy.CareFunction.careActivity;
 import com.example.eyefairy.RadioFunction.radioActivity;
 import com.example.eyefairy.RecordFunction.recordMainActivity;
 
@@ -49,7 +50,16 @@ public class mainActivity extends AppCompatActivity {
 
         });
 
+        ImageButton care_btn = (ImageButton) findViewById(R.id.main_care_btn);
 
+        care_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), careActivity.class);
+                startActivity(intent);
+            }
+
+        });
 
 
     }
